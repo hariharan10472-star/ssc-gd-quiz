@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="ta"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>இந்தியப் பதவிகள் & தேர்தல் வினாடி வினா</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Tamil:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f6f7fb;--card:#fff;--ink:#14213d;--mute:#5b6478;--line:#d9deea;--ok:#157347;--okbg:#e3f4ea;--bad:#b3261e;--badbg:#fbe7e5;--acc:#2b4acb;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e1424;--card:#171f36;--ink:#eef1fa;--mute:#9aa4bd;--line:#2a3555;--ok:#5fd394;--okbg:#10301f;--bad:#ff8a80;--badbg:#3a1714;--acc:#8ea2ff}}
+:root[data-theme="dark"]{--bg:#0e1424;--card:#171f36;--ink:#eef1fa;--mute:#9aa4bd;--line:#2a3555;--ok:#5fd394;--okbg:#10301f;--bad:#ff8a80;--badbg:#3a1714;--acc:#8ea2ff}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0}
+body{background:var(--bg);color:var(--ink);font-family:"Noto Sans Tamil",system-ui,sans-serif}
+main{height:100%;overflow-y:auto;scroll-snap-type:y mandatory}
+section{min-height:100dvh;scroll-snap-align:start;display:flex;flex-direction:column;justify-content:center;padding:20px 18px;max-width:560px;margin:0 auto}
+.top{display:flex;justify-content:space-between;color:var(--mute);font-size:14px;margin-bottom:10px}
+h2{font-size:24px;line-height:1.5;margin:0 0 20px;font-weight:800}
+.o{display:block;width:100%;text-align:left;font:inherit;font-size:18px;color:var(--ink);background:var(--card);border:2px solid var(--line);border-radius:12px;padding:15px 16px;margin:0 0 10px;cursor:pointer}
+.o:focus-visible{outline:3px solid var(--acc)}
+.o b{color:var(--acc);margin-right:10px}
+.o.ok{border-color:var(--ok);background:var(--okbg)}
+.o.bad{border-color:var(--bad);background:var(--badbg)}
+.ans{display:none;align-items:center;gap:14px;margin-top:8px;padding:14px;border-radius:14px;background:var(--card);border:2px solid var(--ok)}
+.show .ans{display:flex}
+.ph{flex:none;width:92px;height:112px;border-radius:12px;object-fit:cover;background:var(--okbg);color:var(--ok);display:flex;align-items:center;justify-content:center;font-size:30px;font-weight:800}
+.ans small{color:var(--mute);display:block;font-size:14px}
+.ans strong{font-size:20px}
+.info{display:none;margin-top:12px;padding:15px;border:1px solid var(--line);border-radius:14px;background:var(--card);font-size:15px;line-height:1.8;color:var(--ink)}
+.show .info{display:block}.info b{color:var(--acc)}
+.nx{margin-top:14px;align-self:flex-end;font:inherit;font-size:16px;color:var(--acc);background:none;border:0;padding:10px;cursor:pointer}
+.end{text-align:center;color:var(--mute)}
+</style></head><body><main id="m"></main>
+<script>
+var IMG={}; // "Name":"data:image/jpeg;base64,..." — add original photos here
+var C={a:"அரசியலமைப்பு",b:"படைகள் & பாதுகாப்பு",c:"உளவு & காவல் படைகள்",d:"நிர்வாகம்",e:"நிதி & பொருளாதாரம்",f:"அறிவியல்",g:"தேர்தல் 2026"};
+var Q=[
+["a","குடியரசுத் தலைவர் யார்?","Droupadi Murmu","Ram Nath Kovind","Pratibha Patil","Pranab Mukherjee"],
+["a","துணைக் குடியரசுத் தலைவர் யார்?","C.P. Radhakrishnan","Jagdeep Dhankhar","M. Venkaiah Naidu","Hamid Ansari"],
+["a","பிரதமர் யார்?","Narendra Modi","Manmohan Singh","A.B. Vajpayee","Rajnath Singh"],
+["a","இந்தியத் தலைமை நீதிபதி (CJI) யார்?","Surya Kant","D.Y. Chandrachud","Sanjiv Khanna","B.R. Gavai"],
+["a","மக்களவைத் தலைவர் (Speaker) யார்?*","Om Birla","Sumitra Mahajan","Meira Kumar","Harivansh"],
+["a","தலைமைத் தேர்தல் ஆணையர் (CEC) யார்?","Gyanesh Kumar","Rajiv Kumar","Sushil Chandra","Sukhbir Singh Sandhu"],
+["a","இவர்களில் தேர்தல் ஆணையர் யார்?","Vivek Joshi","Arun Goel","Anup Chandra Pandey","Rajiv Kumar"],
+["a","இவர்களில் தேர்தல் ஆணையர் யார்?","Sukhbir Singh Sandhu","Arun Goel","Sushil Chandra","Anup Chandra Pandey"],
+["a","தலைமை வழக்கறிஞர் (Attorney General) யார்?","R. Venkataramani","K.K. Venugopal","Mukul Rohatgi","Tushar Mehta"],
+["a","CAG (தலைமைக் கணக்குத் தணிக்கையாளர்) யார்?*","K. Sanjay Murthy","G.C. Murmu","Rajiv Mehrishi","Vinod Rai"],
+["a","UPSC தலைவர் யார்?","Ajay Kumar","Manoj Soni","Preeti Sudan","Giridhar Aramane"],
+["a","16-வது நிதி ஆணையத் தலைவர் யார்?*","Arvind Panagariya","N.K. Singh","Y.V. Reddy","Rajiv Kumar"],
+["b","முப்படைத் தலைமைத் தளபதி (CDS) யார்?","N.S. Raja Subramani","Anil Chauhan","Bipin Rawat","Upendra Dwivedi"],
+["b","தரைப்படைத் தளபதி யார்?","Dhiraj Seth","Upendra Dwivedi","Manoj Pande","M.M. Naravane"],
+["b","கடற்படைத் தளபதி யார்?","Krishna Swaminathan","D.K. Tripathi","R. Hari Kumar","Karambir Singh"],
+["b","இன்று (அக் 10, 2026) விமானப்படைத் தளபதி யார்?","Amar Preet Singh","V.R. Chaudhari","R.K.S. Bhadauria","Ashutosh Dixit"],
+["b","அக் 31, 2026 முதல் புதிய விமானப்படைத் தளபதி யார்?","Ashutosh Dixit","Amar Preet Singh","V.R. Chaudhari","Dhiraj Seth"],
+["b","கடலோரக் காவல்படை இயக்குநர் ஜெனரல் யார்?","Paramesh Sivamani","Rakesh Pal","V.S. Pathania","Krishnaswamy Natarajan"],
+["b","பாதுகாப்புச் செயலாளர் யார்?","Rajesh Kumar Singh","Giridhar Aramane","Ajay Kumar","Sanjay Mitra"],
+["b","DRDO தலைவர் பொறுப்பைக் கூடுதலாக வகிப்பவர் யார்?","Rajesh Kumar Singh","Samir V. Kamat","G. Satheesh Reddy","V. Narayanan"],
+["b","தேசியப் பாதுகாப்பு ஆலோசகர் (NSA) யார்?","Ajit Doval","M.K. Narayanan","Shivshankar Menon","Brajesh Mishra"],
+["c","உளவுப் பிரிவு (IB) இயக்குநர் யார்?*","Mahesh Dixit","Tapan Deka","Arvind Kumar","Rajiv Jain"],
+["c","RAW செயலாளர் யார்?","Parag Jain","Ravi Sinha","Samant Goel","Anil Dhasmana"],
+["c","CBI இயக்குநர் யார்?","Praveen Sood","Subodh Kumar Jaiswal","Rishi Kumar Shukla","Alok Verma"],
+["c","அமலாக்கத்துறை (ED) இயக்குநர் யார்?","Rahul Navin","Sanjay Kumar Mishra","Karnal Singh","Rajeshwar Singh"],
+["c","NIA தலைமை இயக்குநர் யார்?*","Rakesh Aggarwal","Dinkar Gupta","Y.C. Modi","Sadanand Date"],
+["c","தற்காலிக மத்தியக் கண்காணிப்பு ஆணையர் (CVC) யார்?","A.S. Rajeev","Praveen Kumar Srivastava","Suresh N. Patel","Sanjay Kothari"],
+["c","BSF இயக்குநர் ஜெனரல் யார்?*","Praveen Kumar","Nitin Agrawal","Rakesh Asthana","Daljit Singh Chawdhary"],
+["c","CRPF இயக்குநர் ஜெனரல் யார்?*","Gyanendra Pratap Singh","Anish Dayal Singh","A.P. Maheshwari","Kuldiep Singh"],
+["c","CISF இயக்குநர் ஜெனரல் யார்?*","Praveer Ranjan","Nina Singh","Rajwinder Singh Bhatti","Sudeep Lakhtakia"],
+["c","ITBP இயக்குநர் ஜெனரல் யார்?*","Shatrujeet Singh Kapoor","Anish Dayal Singh","Sanjay Arora","S.S. Deswal"],
+["c","SSB இயக்குநர் ஜெனரல் யார்?*","Sanjay Singhal","Amrit Mohan Prasad","Kuldiep Singh","Sudhir Saxena"],
+["c","NSG இயக்குநர் ஜெனரல் யார்?*","B. Srinivasan","Nalin Prabhat","M.A. Ganapathy","Sudeep Lakhtakia"],
+["d","அமைச்சரவைச் செயலாளர் யார்?","T.V. Somanathan","Rajiv Gauba","P.K. Sinha","P.K. Mishra"],
+["d","உள்துறைச் செயலாளர் யார்?","Govind Mohan","Ajay Bhalla","Rajiv Gauba","Rajiv Mehrishi"],
+["d","வெளியுறவுச் செயலாளர் யார்?","Vikram Misri","Vinay Kwatra","H.V. Shringla","Vijay Gokhale"],
+["d","பொருளாதார விவகாரச் செயலாளர் (முதல் பெண்) யார்?","Anuradha Thakur","Tuhin Kanta Pandey","Ajay Seth","Arvind Shrivastava"],
+["d","வருவாய்ச் செயலாளர் யார்?","Arvind Shrivastava","Sanjay Malhotra","Tuhin Kanta Pandey","Vumlunmang Vualnam"],
+["d","செலவினச் செயலாளர் யார்?","Vumlunmang Vualnam","Ajay Seth","T.V. Somanathan","Anuradha Thakur"],
+["d","நிதிச் செயலாளராக இருந்த Ajay Seth இப்போது எந்தப் பதவியில்?","IRDAI தலைவர்","RBI ஆளுநர்","SEBI தலைவர்","நிதிச் செயலாளர் (இப்போது யாருமில்லை)","Ajay Seth"],
+["d","நிதி ஆயோக் துணைத் தலைவர் யார்?","Ashok Lahiri","Suman Bery","Rajiv Kumar","Arvind Panagariya"],
+["d","நிதி ஆயோக் CEO யார்?","Anurag Jain","B.V.R. Subrahmanyam","Amitabh Kant","Parameswaran Iyer"],
+["d","ரயில்வே வாரியத் தலைவர் யார்?","Satish Kumar","Jaya Verma Sinha","Ashwani Lohani","Anil Kumar Lahoti"],
+["d","தலைமைத் தகவல் ஆணையர் (CIC) யார்?*","Raj Kumar Goyal","Heeralal Samariya","Y.K. Sinha","Sudhir Bhargava"],
+["d","NHRC தலைவர் யார்?*","V. Ramasubramanian","Arun Kumar Mishra","H.L. Dattu","K.G. Balakrishnan"],
+["e","RBI ஆளுநர் யார்?","Sanjay Malhotra","Shaktikanta Das","Urjit Patel","Raghuram Rajan"],
+["e","SEBI தலைவர் யார்?","Tuhin Kanta Pandey","Madhabi Puri Buch","Ajay Tyagi","U.K. Sinha"],
+["e","IRDAI தலைவர் யார்?","Ajay Seth","Debasish Panda","Subhash Khuntia","T.S. Vijayan"],
+["e","தலைமைப் பொருளாதார ஆலோசகர் (CEA) யார்?*","V. Anantha Nageswaran","Krishnamurthy Subramanian","Sanjeev Sanyal","Arvind Subramanian"],
+["e","CBDT தலைவர் யார்?*","Ravi Agarwal","Sanjay Kumar Agarwal","Nitin Gupta","J.B. Mohapatra"],
+["e","CBIC தலைவர் யார்?*","Vivek Chaturvedi","Sanjay Kumar Agarwal","M. Ajit Kumar","Pramod Kumar Das"],
+["e","SBI தலைவர் யார்?*","C.S. Setty","Dinesh Khara","Rajnish Kumar","Arundhati Bhattacharya"],
+["f","ISRO தலைவர் யார்?","V. Narayanan","S. Somanath","K. Sivan","A.S. Kiran Kumar"],
+["f","CSIR இயக்குநர் ஜெனரல் யார்?","N. Kalaiselvi","Shekhar C. Mande","Girish Sahni","Samir V. Kamat"],
+["f","ICMR இயக்குநர் ஜெனரல் யார்?*","Rajiv Bahl","Balram Bhargava","Soumya Swaminathan","Vinod K. Paul"],
+["f","அணுசக்தி ஆணையத் தலைவர் யார்?*","Ajit Kumar Mohanty","K.N. Vyas","Anil Kakodkar","Sekhar Basu"],
+["g","அசாமில் வென்ற கூட்டணி எது?","BJP தலைமையிலான NDA","காங்கிரஸ் கூட்டணி","AIUDF","AAP"],
+["g","அசாமில் (126) NDA வென்ற இடங்கள்?","102","82","92","112"],
+["g","அசாமில் BJP மட்டும் வென்ற இடங்கள்?","82","102","62","72"],
+["g","அசாம் முதல்வர் யார்?","Himanta Biswa Sarma","Sarbananda Sonowal","Pijush Hazarika","Gaurav Gogoi"],
+["g","கேரளாவில் வென்ற கூட்டணி எது?","UDF","LDF","NDA","AAP"],
+["g","கேரளாவில் (140) UDF வென்ற இடங்கள்?","102","92","112","82"],
+["g","கேரள முதல்வர் யார்?","V.D. Satheesan","Pinarayi Vijayan","Ramesh Chennithala","K.C. Venugopal"],
+["g","கேரளாவில் LDF வென்ற இடங்கள்?","35","25","45","55"],
+["g","புதுச்சேரியில் வென்ற கூட்டணி எது?","AINRC தலைமையிலான NDA","DMK-காங்கிரஸ்","TVK","AIADMK தனி"],
+["g","புதுச்சேரியில் (30) NDA வென்ற இடங்கள்?","18","12","16","20"],
+["g","புதுச்சேரி முதல்வர் யார்?","N. Rangasamy","V. Narayanasamy","V. Vaithilingam","A. Namassivayam"],
+["g","தமிழ்நாட்டில் தனிப்பெரும் கட்சியாக வென்றது எது?","TVK","DMK","AIADMK","BJP"],
+["g","தமிழ்நாட்டில் (234) TVK வென்ற இடங்கள்?","108","118","98","120"],
+["g","தமிழ்நாடு முதல்வர் யார்?","C. Joseph Vijay","M.K. Stalin","Edappadi K. Palaniswami","Udhayanidhi Stalin"],
+["g","மேற்கு வங்கத்தில் வென்ற கட்சி எது?","BJP","TMC","CPI(M)","காங்கிரஸ்"],
+["g","மேற்கு வங்கத்தில் (294) BJP வென்ற இடங்கள்?","207","187","197","217"],
+["g","மேற்கு வங்க முதல்வர் யார்?","Suvendu Adhikari","Mamata Banerjee","Dilip Ghosh","Sukanta Majumdar"],
+["g","2026-ல் தேர்தல் நடந்த ஒரே யூனியன் பிரதேசம்?","Puducherry","Delhi","Ladakh","Jammu & Kashmir"],
+["g","2026 தேர்தலில் மொத்தம் எத்தனை சட்டமன்ற இடங்கள்?","824","794","854","724"]
+];
+var EXTRA={
+0:'<b>📚 கூடுதல் தகவல்</b><br>முதல் குடியரசுத் தலைவர்: Dr. Rajendra Prasad.<br>பதவியேற்ற ஆண்டு: 1950.<br>Droupadi Murmu 25 ஜூலை 2022 அன்று 15-வது குடியரசுத் தலைவராகப் பதவியேற்றார்.',
+1:'<b>📚 கூடுதல் தகவல்</b><br>முதல் துணைக் குடியரசுத் தலைவர்: Dr. Sarvepalli Radhakrishnan (1952).',
+2:'<b>📚 கூடுதல் தகவல்</b><br>முதல் பிரதமர்: Jawaharlal Nehru (1947).',
+3:'<b>📚 கூடுதல் தகவல்</b><br>முதல் தலைமை நீதிபதி: H. J. Kania (1950). Surya Kant 24 நவம்பர் 2025 அன்று CJI ஆகப் பதவியேற்றார்.',
+4:'<b>📚 கூடுதல் தகவல்</b><br>முதல் மக்களவைத் தலைவர்: G. V. Mavalankar (1952).',
+5:'<b>📚 கூடுதல் தகவல்</b><br>முதல் தலைமைத் தேர்தல் ஆணையர்: Sukumar Sen. தேர்தல் ஆணையம் 1950-ல் அமைக்கப்பட்டது.',
+8:'<b>📚 கூடுதல் தகவல்</b><br>முதல் Attorney General: M. C. Setalvad. அரசியலமைப்பின் Article 76 இந்தப் பதவியைக் குறிப்பிடுகிறது.',
+9:'<b>📚 கூடுதல் தகவல்</b><br>முதல் CAG: V. Narahari Rao. CAG அரசுக் கணக்குகளைத் தணிக்கை செய்கிறது.',
+10:'<b>📚 கூடுதல் தகவல்</b><br>UPSC-ன் ஆரம்பகால முதல் தலைவர்: Sir Ross Barker (1926). UPSC மத்திய அரசுப் பணிகளுக்கான தேர்வுகளை நடத்துகிறது.',
+11:'<b>📚 கூடுதல் தகவல்</b><br>முதல் நிதி ஆணையத் தலைவர்: K. C. Neogy (1951). நிதி ஆணையம் Article 280-ன் கீழ் அமைக்கப்படுகிறது.',
+12:'<b>📚 கூடுதல் தகவல்</b><br>முதல் CDS: General Bipin Rawat; 1 ஜனவரி 2020 அன்று பொறுப்பேற்றார்.',
+13:'<b>📚 கூடுதல் தகவல்</b><br>சுதந்திர இந்தியாவின் முதல் இந்திய Army Commander-in-Chief: K. M. Cariappa (1949). பதவிப் பெயர்கள் காலப்போக்கில் மாறியுள்ளன.',
+14:'<b>📚 கூடுதல் தகவல்</b><br>முதல் இந்திய Chief of Naval Staff: Vice Admiral R. D. Katari (1958).',
+15:'<b>📚 கூடுதல் தகவல்</b><br>முதல் இந்திய Chief of Air Staff: Air Marshal Subroto Mukerjee (1954).',
+19:'<b>📚 கூடுதல் தகவல்</b><br>முதல் National Security Advisor: Brajesh Mishra (1998).',
+21:'<b>📚 கூடுதல் தகவல்</b><br>R&AW 1968-ல் உருவாக்கப்பட்டது. முதல் தலைவர்: R. N. Kao.',
+22:'<b>📚 கூடுதல் தகவல்</b><br>CBI 1963-ல் நிறுவப்பட்டது. முதல் இயக்குநர்: D. P. Kohli.',
+24:'<b>📚 கூடுதல் தகவல்</b><br>NIA 2008-ல் உருவாக்கப்பட்டது.',
+25:'<b>📚 கூடுதல் தகவல்</b><br>CVC 1964-ல் உருவாக்கப்பட்டது; 2003-ல் சட்டப்பூர்வ அந்தஸ்து பெற்றது.',
+26:'<b>📚 கூடுதல் தகவல்</b><br>BSF 1965-ல் உருவாக்கப்பட்டது. முதல் DG: K. F. Rustamji.',
+29:'<b>📚 கூடுதல் தகவல்</b><br>ITBP 1962-ல் உருவாக்கப்பட்டது.',
+31:'<b>📚 கூடுதல் தகவல்</b><br>NSG 1984-ல் உருவாக்கப்பட்டது.',
+32:'<b>📚 கூடுதல் தகவல்</b><br>முதல் Cabinet Secretary: N. R. Pillai (1950).',
+39:'<b>📚 கூடுதல் தகவல்</b><br>NITI Aayog 2015-ல் Planning Commission-க்கு மாற்றாக உருவாக்கப்பட்டது. முதல் துணைத் தலைவர்: Arvind Panagariya.',
+40:'<b>📚 கூடுதல் தகவல்</b><br>NITI Aayog-ன் முதல் CEO: Sindhushree Khullar (2015).',
+42:'<b>📚 கூடுதல் தகவல்</b><br>முதல் Chief Information Commissioner: Wajahat Habibullah (2005). RTI சட்டம் 2005-ல் அமலுக்கு வந்தது.',
+43:'<b>📚 கூடுதல் தகவல்</b><br>NHRC 1993-ல் நிறுவப்பட்டது. முதல் தலைவர்: Justice Ranganath Misra.',
+44:'<b>📚 கூடுதல் தகவல்</b><br>முதல் RBI ஆளுநர்: Sir Osborne Smith (1935). Sanjay Malhotra 11 டிசம்பர் 2024 அன்று 26-வது ஆளுநராகப் பொறுப்பேற்றார்.',
+45:'<b>📚 கூடுதல் தகவல்</b><br>SEBI 1988-ல் உருவாக்கப்பட்டது; 1992-ல் சட்டப்பூர்வ அதிகாரம் பெற்றது. முதல் தலைவர்: Dr. S. A. Dave.',
+46:'<b>📚 கூடுதல் தகவல்</b><br>IRDAI-ன் முதல் தலைவர்: N. Rangachary (2000).',
+51:'<b>📚 கூடுதல் தகவல்</b><br>ISRO 1969-ல் நிறுவப்பட்டது. முதல் தலைவர்: Dr. Vikram Sarabhai.',
+52:'<b>📚 கூடுதல் தகவல்</b><br>CSIR 1942-ல் நிறுவப்பட்டது. முதல் Director-General: Dr. Shanti Swarup Bhatnagar.',
+54:'<b>📚 கூடுதல் தகவல்</b><br>Atomic Energy Commission 1948-ல் அமைக்கப்பட்டது. முதல் தலைவர்: Dr. Homi J. Bhabha.',
+55:'<b>📚 கூடுதல் தகவல்</b><br>அசாம் சட்டமன்றத்தில் 126 இடங்கள் உள்ளன. 2026 தேர்தல் எண்ணிக்கையை ECI அதிகாரப்பூர்வ முடிவுகளுடன் சரிபார்க்கவும்.',
+59:'<b>📚 கூடுதல் தகவல்</b><br>கேரள சட்டமன்றத்தில் 140 தொகுதிகள் உள்ளன. கூட்டணி/இட எண்ணிக்கைகளை ECI முடிவுகளுடன் சரிபார்க்கவும்.',
+63:'<b>📚 கூடுதல் தகவல்</b><br>புதுச்சேரி சட்டமன்றத்தில் 30 தேர்ந்தெடுக்கப்பட்ட இடங்கள் உள்ளன.',
+66:'<b>📚 கூடுதல் தகவல்</b><br>தமிழ்நாடு சட்டமன்றத்தில் 234 தொகுதிகள் உள்ளன. 2026 தேர்தல் முடிவுகளை ECI அதிகாரப்பூர்வ தளத்தில் சரிபார்க்கவும்.',
+69:'<b>📚 கூடுதல் தகவல்</b><br>மேற்கு வங்க சட்டமன்றத்தில் 294 தொகுதிகள் உள்ளன. 2026 தேர்தல் முடிவுகளை ECI தளத்தில் சரிபார்க்கவும்.'
+};
+var PERSON=/^[A-Z][A-Za-z.]+( [A-Za-z.]+)+$/;
+var m=document.getElementById("m"),h="";
+Q.forEach(function(q,i){
+  var cat=q[0],t=q[1],ans=q[2],opts=q.slice(2,6),who=q[6]||ans;
+  var r=(i*5+2)%4,o=opts.slice(r).concat(opts.slice(0,r));
+  var person=PERSON.test(who)&&cat!=="g"||(cat==="g"&&/முதல்வர்/.test(t));
+  h+='<section data-i="'+i+'" data-a="'+ans.replace(/"/g,"&quot;")+'" data-w="'+(person?who:"")+'"><div class="top"><span>'+C[cat]+'</span><span>'+(i+1)+' / '+Q.length+'</span></div><h2>'+t+'</h2>';
+  o.forEach(function(x,k){h+='<button class="o" data-v="'+x.replace(/"/g,"&quot;")+'"><b>'+"ABCD"[k]+')</b>'+x+'</button>'});
+  h+='<div class="ans"><div class="ph" aria-hidden="true"></div><div><small>சரியான விடை</small><strong class="av"></strong></div></div><div class="info"></div><button class="nx">அடுத்தது ↓</button></section>'; 
+});
+h+='<section class="end"><h2>முடிந்தது 🎉</h2><p>* குறியிட்டவை ஒரே ஒரு பட்டியலில் மட்டும் உறுதி செய்யப்பட்டவை.</p></section>';
+m.innerHTML=h;
+m.addEventListener("click",function(e){
+  var s=e.target.closest("section");if(!s)return;
+  if(e.target.closest(".nx")){var n=s.nextElementSibling;if(n)n.scrollIntoView({behavior:"smooth"});return}
+  var b=e.target.closest(".o");if(!b||s.classList.contains("show"))return;
+  var a=s.dataset.a;
+  s.querySelectorAll(".o").forEach(function(x){if(x.dataset.v===a)x.classList.add("ok")});
+  if(b.dataset.v!==a)b.classList.add("bad");
+  s.classList.add("show");
+  s.querySelector(".av").textContent=a;
+  var w=s.dataset.w,ph=s.querySelector(".ph");
+  if(!w){ph.style.display="none"}
+  else if(IMG[w]){var im=document.createElement("img");im.className="ph";im.alt=w;im.src=IMG[w];ph.replaceWith(im)}
+  else ph.textContent=w.split(" ").map(function(p){return p[0]}).slice(0,2).join("");
+  s.querySelector(".info").innerHTML=EXTRA[Number(s.dataset.i)]||"<b>📚 கூடுதல் தகவல்</b><br>இந்தப் பதவியின் முதல் நபர் மற்றும் ஆண்டு பற்றிய தகவலைத் தவறாகக் கொடுக்காமல் இருக்க, அதிகாரப்பூர்வ ஆதாரத்தில் உறுதி செய்த பிறகு சேர்க்க வேண்டும். பதவி மாறக்கூடியது என்பதால் தற்போதைய பெயரையும் சரிபார்க்கவும்.";
+});
+</script></body></html>
